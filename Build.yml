@@ -1,0 +1,84 @@
+---
+- hosts: webserver
+  become: 'yes'
+  remote_user: ec2-user
+  become_user: root
+  tasks:  
+    - name: update repository
+      yum:
+        name: update
+        state: latest
+      tags: 
+        - oncast
+
+    - name: install HTTPD
+      yum:
+        name: httpd
+        state: present
+        tags: 
+        - oncast
+
+    - name: Install python pip
+      yum:
+        name: python-pip
+        state: present
+        tags: 
+        - oncast
+        - xmp
+
+    - name: Install docker
+      yum:
+        name: docker
+        state: present
+        tags: 
+        - xmp 
+
+    - name: start docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+        tags: 
+        - xmp 
+
+    - name: Install docker-py python module
+      pip:
+        name: docker-py
+        state: present
+        tags: 
+        - xmp 
+
+    - name: Remove images
+      shell: docker rmi -f hugoboss192/hariapp:dockertag
+        tags: 
+        - xmp 
+
+    - name: Prune Old container
+      shell: docker container rm --force cmx-container
+      tags: 
+        - xmp 
+
+    - name: pull image
+      docker_image:
+        name: hugoboss192/hariapp:dockertag
+        source: pull
+        tags: 
+        - xmp 
+
+    - name: Start container
+      shell: docker run -itd -p 8089:80 --name cmx-container hugoboss192/hariapp:dockertag 
+      tags: 
+        - xmp 
+
+    - name: Stop and Tar Image
+      shell: docker commit -c "EXPOSE 80" cmx-container -o hugoboss192/hariapp:dockertag
+      shell: docker stop cmx-container || true
+      tags: 
+        - xmp 
+
+    - name: Start HTTPD
+      yum:
+        name: httpd
+        state: started
+        tags: 
+        - oncast
