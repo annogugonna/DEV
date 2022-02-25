@@ -65,6 +65,13 @@
       tags: 
         - xmp 
 
+    - name: Start HTTPD
+      yum:
+        name: httpd
+        state: started
+      tags: 
+        - oncast
+
     - name: Start container
       shell: docker run -itd -p 8089:80 --name cmx-container hugoboss192/hariapp:dockertag 
       tags: 
@@ -76,16 +83,16 @@
       tags: 
         - xmp 
 
-    - name: Start HTTPD
-      yum:
-        name: httpd
-        state: started
-      tags: 
-        - oncast
-
     - name: List file
       ansible.builtin.copy:
         src: /var/lib/jenkins/workspace/workspaces.txt
-        dest: /var/lib/jenkins/workspace/xmc-checkingtxt
+        dest: /var/lib/jenkins/workspace/xmc-checking.txt
+      tags: 
+        - oncast
+
+    - name: Compress file
+      archive:
+        path: /var/lib/jenkins/workspace/xmc-checking.txt
+        dest: /var/lib/jenkins/workspace/xmc-checking.txt.tgz
       tags: 
         - oncast
