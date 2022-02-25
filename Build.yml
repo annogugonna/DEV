@@ -83,7 +83,15 @@
       tags: 
         - xmp 
 
-    - name: List file
+    - name: Display multiple file content
+      debug: var=item
+      with_file:
+        - /var/lib/jenkins/workspace/workspaces.txt
+        - /var/lib/jenkins/workspace/xmc-checking.txt
+      tags:
+        - oncast
+
+    - name: Moved file
       ansible.builtin.copy:
         src: /var/lib/jenkins/workspace/workspaces.txt
         dest: /var/lib/jenkins/workspace/xmc-checking.txt
