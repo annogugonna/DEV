@@ -50,7 +50,7 @@
 
     - name: Remove images
       shell: docker rmi -f hugoboss192/hariapp:dockertag
-        tags: 
+      tags: 
         - xmp 
 
     - name: Prune Old container
