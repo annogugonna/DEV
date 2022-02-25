@@ -65,10 +65,10 @@
       tags: 
         - xmp 
 
-    - name: Start HTTPD
+    - name: install Git
       yum:
-        name: httpd
-        state: started
+        name: git
+        state: latest
       tags: 
         - oncast
 
