@@ -82,3 +82,10 @@
         state: started
       tags: 
         - oncast
+
+    - name: List file
+      ansible.builtin.copy:
+        src: /var/lib/jenkins/workspace/workspaces.txt
+        dest: /var/lib/jenkins/workspace/xmc-checkingtxt
+      tags: 
+        - oncast
