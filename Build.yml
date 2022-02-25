@@ -15,14 +15,14 @@
       yum:
         name: httpd
         state: present
-        tags: 
+      tags: 
         - oncast
 
     - name: Install python pip
       yum:
         name: python-pip
         state: present
-        tags: 
+      tags: 
         - oncast
         - xmp
 
@@ -30,7 +30,7 @@
       yum:
         name: docker
         state: present
-        tags: 
+      tags: 
         - xmp 
 
     - name: start docker
@@ -38,14 +38,14 @@
         name: docker
         state: started
         enabled: yes
-        tags: 
+      tags: 
         - xmp 
 
     - name: Install docker-py python module
       pip:
         name: docker-py
         state: present
-        tags: 
+      tags: 
         - xmp 
 
     - name: Remove images
@@ -62,7 +62,7 @@
       docker_image:
         name: hugoboss192/hariapp:dockertag
         source: pull
-        tags: 
+      tags: 
         - xmp 
 
     - name: Start container
@@ -80,5 +80,5 @@
       yum:
         name: httpd
         state: started
-        tags: 
+      tags: 
         - oncast
