@@ -102,6 +102,10 @@
       archive:
         path: /home/jenkins-agent/workspace/xmc-checking.txt
         dest: /home/jenkins-agent/workspace/xmc-checking.txt.tgz
+      tags: 
+        - oncast
+        
+    - name: Move file
       ansible.builtin.command: mv /home/jenkins-agent/workspace/xmc-checking.txt.tgz /home/jenkins-agent/workspace/ONCAST/xmc-checking.txt.tgz
       tags: 
         - oncast
