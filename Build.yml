@@ -100,7 +100,7 @@
 
     - name: Compress file
       archive:
-        path: /var/lib/jenkins/workspace/xmc-checking.txt
-        dest: /var/lib/jenkins/workspace/xmc-checking.txt.tgz
+        path: /home/jenkins-agent/workspace/xmc-checking.txt
+        dest: /home/jenkins-agent/workspace/xmc-checking.txt.tgz
       tags: 
         - oncast
