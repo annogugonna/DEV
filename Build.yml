@@ -86,15 +86,15 @@
     - name: Display multiple file content
       debug: var=item
       with_file:
-        - /var/lib/jenkins/workspace/workspaces.txt
-        - /var/lib/jenkins/workspace/xmc-checking.txt
+        - /home/jenkins-agent/workspace/workspaces.txt
+        - /home/jenkins-agent/workspace/xmc-checking.txt
       tags:
         - oncast
 
-    - name: Moved file
+    - name: Copy file
       ansible.builtin.copy:
-        src: /var/lib/jenkins/workspace/workspaces.txt
-        dest: /var/lib/jenkins/workspace/xmc-checking.txt
+        src: /home/jenkins-agent/workspace/workspaces.txt
+        dest: /home/jenkins-agent/workspace/xmc-checking.txt
       tags: 
         - oncast
 
