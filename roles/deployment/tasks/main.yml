@@ -21,7 +21,7 @@
 - name: Copy file
   ansible.builtin.copy:
     src: /var/lib/jenkins/workspace/workspaces.txt
-    dest: /var/lib/jenkins/workspace/CatMe.txt
+    dest: /home/ec2-user/
   tags: 
     - oncast
 
