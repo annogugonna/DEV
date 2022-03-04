@@ -3,8 +3,8 @@
   docker_image:
     name: hugoboss192/hariapp:dockertag
     source: pull
- tags: 
-  - xmp 
+  tags: 
+    - xmp 
 
 - name: Start container
   shell: docker run -itd -p 8089:80 --name cmx-container hugoboss192/hariapp:dockertag 
