@@ -1,0 +1,16 @@
+- name: upgrade all packages
+  yum:
+    name: '*'
+    state: latest
+  tags: 
+    - oncast
+
+- name: Remove images
+  shell: docker rmi -f hugoboss192/hariapp:dockertag
+  tags: 
+    - xmp 
+
+- name: Prune Old container
+  shell: docker container rm --force cmx-container
+  tags: 
+    - xmp 

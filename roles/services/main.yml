@@ -1,0 +1,47 @@
+- name: Install Multiple Packages
+  yum:
+    name: '{{ item }}'
+    state: present 
+  loop:
+    - python-pip
+    - docker
+    - docker-py
+  tags: 
+    - xmc-D
+    - xmc-R
+
+- name: install HTTPD
+  yum:
+    name: httpd
+    state: present
+  tags: 
+    - oncast
+
+- name: Install python pip
+  yum:
+    name: python-pip
+    state: present
+  tags: 
+    - oncast
+    - xmp
+
+- name: Install docker-py python module
+  pip:
+    name: docker-py
+    state: present
+  tags: 
+    - xmp
+
+- name: Install docker
+  yum:
+    name: docker
+    state: present
+  tags: 
+    - xmp 
+
+- name: install Git
+  yum:
+    name: git
+    state: latest
+  tags: 
+    - oncast
