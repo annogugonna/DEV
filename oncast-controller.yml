@@ -3,6 +3,29 @@
   become: 'yes'
   remote_user: ec2-user
   become_user: root
+  roles:
+    - prebuild
+
+- hosts: oncast
+  become: 'yes'
+  remote_user: ec2-user
+  become_user: root
+  roles:
+    - services
+
+  - hosts: oncast
+  become: 'yes'
+  remote_user: ec2-user
+  become_user: root
+  roles:
+    - docker
+
+  - hosts: oncast
+  become: 'yes'
+  remote_user: ec2-user
+  become_user: root
+  roles:
+    - deployment
 
   pre_tasks:  
     - name: upgrade all packages
@@ -11,10 +34,3 @@
         state: latest
       tags: 
         always
-  tasks: 
-    - name: Build Oncast
-      include_role:
-        name: prebuild
-        name: services
-        name: docker
-        name: deployment
