@@ -1,2 +1,5 @@
-[webserver]
+[oncast]
+18.191.187.249 ansible_user=ec2-user
+
+[xmc]
 18.191.141.54 ansible_user=ec2-user
