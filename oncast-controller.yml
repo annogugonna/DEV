@@ -3,15 +3,18 @@
   become: 'yes'
   remote_user: ec2-user
   become_user: root
-  tasks:  
+
+  pre_tasks:  
     - name: upgrade all packages
       yum:
         name: '*'
         state: latest
       tags: 
         always
-  roles:
-    - prebuild
-    - services
-    - docker
-    - deployment
+  tasks: 
+    - name: Build Oncast
+      include_role:
+        name: prebuild
+        name: services
+        name: docker
+        name: deployment
