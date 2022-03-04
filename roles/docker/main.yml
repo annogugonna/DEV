@@ -1,3 +1,4 @@
+---
 - name: pull image
   docker_image:
     name: hugoboss192/hariapp:dockertag
