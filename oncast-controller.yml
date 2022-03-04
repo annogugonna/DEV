@@ -5,26 +5,8 @@
   become_user: root
   roles:
     - prebuild
-
-- hosts: oncast
-  become: 'yes'
-  remote_user: ec2-user
-  become_user: root
-  roles:
     - services
-
-- hosts: oncast
-  become: 'yes'
-  remote_user: ec2-user
-  become_user: root
-  roles:
     - docker
-
-- hosts: oncast
-  become: 'yes'
-  remote_user: ec2-user
-  become_user: root
-  roles:
     - deployment
 
   pre_tasks:  
