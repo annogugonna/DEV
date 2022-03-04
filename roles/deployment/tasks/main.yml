@@ -21,7 +21,7 @@
 - name: Copy file
   ansible.builtin.copy:
     src: /var/lib/jenkins/workspace/workspaces.txt
-    dest: /var/lib/jenkins/workspace/xmc-checking.txt
+    dest: /var/lib/jenkins/workspace/CatMe.txt
   tags: 
     - oncast
 
