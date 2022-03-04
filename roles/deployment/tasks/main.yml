@@ -13,26 +13,26 @@
 - name: Display multiple file content
   debug: var=item
   with_file:
-    - /home/jenkins-agent/workspace/workspaces.txt
-    - /home/jenkins-agent/workspace/xmc-checking.txt
+    - /var/lib/jenkins/workspace/workspaces.txt
+    - /var/lib/jenkins/workspace/xmc-checking.txt
   tags:
     - oncast
 
 - name: Copy file
   ansible.builtin.copy:
-    src: /home/jenkins-agent/workspace/workspaces.txt
-    dest: /home/jenkins-agent/workspace/xmc-checking.txt
+    src: /var/lib/jenkins/workspace/workspaces.txt
+    dest: /var/lib/jenkins/workspace/xmc-checking.txt
   tags: 
     - oncast
 
 - name: Compress file
   archive:
-    path: /home/jenkins-agent/workspace/xmc-checking.txt
-    dest: /home/jenkins-agent/workspace/xmc-checking.txt.tgz
+    path: /var/lib/jenkins/workspace/xmc-checking.txt
+    dest: /var/lib/jenkins/workspace/xmc-checking.txt.tgz
   tags: 
     - oncast
         
 - name: Move file
-  ansible.builtin.command: mv /home/jenkins-agent/workspace/xmc-checking.txt.tgz /home/jenkins-agent/workspace/ONCAST/xmc-checking.txt.tgz
+  ansible.builtin.command: mv /var/lib/jenkins/workspace/xmc-checking.txt.tgz /var/lib/jenkins/workspace/ONCAST/xmc-checking.txt.tgz
   tags: 
     - oncast
