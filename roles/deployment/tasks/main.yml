@@ -1,9 +1,4 @@
 ---
-- name: Start container
-  shell: docker run -itd -p 8089:80 --name cmx-container hugoboss192/hariapp:dockertag 
-  tags: 
-    - xmp 
-
 - name: Stop and Tar Image
   shell: docker commit -c "EXPOSE 80" cmx-container -o hugoboss192/hariapp:dockertag
   shell: docker stop cmx-container || true
